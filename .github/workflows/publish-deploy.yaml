@@ -58,7 +58,7 @@ jobs:
             export ENVIRONMENT=$ENVIRONMENT
 
             newgrp docker
-            docker rm -f $(docker ps -a -q)
-            docker rmi -f $(docker images -q)
             cd ~/CeTour
+            docker rm -f $(docker ps -a -q) || true &&
+            docker rmi -f $(docker images -q) || true &&
             docker compose up --build -d
