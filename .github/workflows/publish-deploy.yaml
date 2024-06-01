@@ -11,6 +11,7 @@ on:
 
 jobs:
   publish:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -59,6 +60,6 @@ jobs:
 
             newgrp docker
             cd ~/CeTour
-            docker rm -f $(docker ps -a -q) || true &&
-            docker rmi -f $(docker images -q) || true &&
+            docker rm -f $IMAGE_NAME || true &&
+            docker rmi -f $DOCKERHUB_USERNAME/$IMAGE_NAME || true &&
             docker compose up --build -d
