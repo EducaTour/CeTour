@@ -19,7 +19,8 @@ jobs:
           python-version: 3.11
 
       - name: Before Script
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
           python manage.py migrate
 
       - name: Run Tests
