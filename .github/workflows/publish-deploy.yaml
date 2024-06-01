@@ -43,8 +43,8 @@ jobs:
           SECRET_KEY: ${{secrets.SECRET_KEY}}
           ENVIRONMENT: production
         with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USERNAME}}
+          host: ${{secrets.SSH_HOST}}
+          username: ${{secrets.SSH_USERNAME}}
           key: ${{secrets.SSH_KEY}}
           port: 22
           envs: DOCKERHUB_USERNAME,IMAGE_NAME,POSTGRES_USER,POSTGRES_PASSWORD,POSTGRES_DB,SECRET_KEY,ENVIRONMENT
