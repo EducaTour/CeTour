@@ -3,7 +3,7 @@ name: Unit Test and Coverage
 on:
   push:
     branches:
-      - '*'
+      - "*"
 
 jobs:
   test:
@@ -18,9 +18,9 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Before Script
+        run: pip install -r requirements.txt
+          python manage.py migrate
 
       - name: Run Tests
         run: |
