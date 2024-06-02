@@ -15,12 +15,18 @@ jobs:
     steps:
       - name: Connect to server via SSH
         uses: appleboy/ssh-action@master
+        env:
+          CERTBOT_EMAIL: ${{secrets.CERTBOT_EMAIL}}
+          CERTBOT_DOMAIN: ${{secrets.CERTBOT_DOMAIN}}
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USERNAME}}
           key: ${{secrets.SSH_KEY}}
           port: 22
+          envs: CERTBOT_EMAIL,CERTBOT_DOMAIN
           script: |
+            export CERTBOT_EMAIL=$CERTBOT_EMAIL
+            export CERTBOT_DOMAIN=$CERTBOT_DOMAIN
             cd ~/CeTour
             git pull origin main
             docker compose -f docker-compose.prod.yaml down -v
