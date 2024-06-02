@@ -32,6 +32,7 @@ jobs:
             echo 'duh kok gak bisa sih, emangn boleh'
             env
             cd ~/CeTour
+            docker compose -f docker-compose.prod.yaml config
             git pull origin main
             docker compose -f docker-compose.prod.yaml down
             docker compose -f docker-compose.prod.yaml up -d --build
