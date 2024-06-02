@@ -25,8 +25,8 @@ services:
     restart: unless-stopped
     volumes:
       - static_volume:/home/app/web/staticfiles
-      - certbot_conf:/etc/letsencrypt
-      - certbot_www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     ports:
       - 80:80
       - 443:443
@@ -36,12 +36,10 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
-      - certbot_conf:/etc/letsencrypt
-      - certbot_www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     command: certonly --webroot --webroot-path=/var/www/certbot --email ${CERTBOT_EMAIL} --keep-until-expiring --agree-tos -d ${CERTBOT_DOMAIN}
 
 volumes:
   postgres_data:
   static_volume:
-  certbot_conf:
-  certbot_www:
