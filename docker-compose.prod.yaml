@@ -40,6 +40,8 @@ services:
     ports:
       - 80:80
       - 443:443
+    environment:
+      - CERTBOT_DOMAIN=${CERTBOT_DOMAIN}
     depends_on:
       - web
   certbot:
