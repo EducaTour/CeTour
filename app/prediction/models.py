@@ -1,11 +1,14 @@
-from django.db import models
-import uuid
 import os
+import uuid
+
+from django.db import models
+
 
 def get_file_path(filename):
-    ext = filename.split('.')[-1]
+    ext = filename.split(".")[-1]
     new_filename = f"{uuid.uuid4()}.{ext}"
-    return os.path.join('photos/', new_filename)
+    return os.path.join("photos/", new_filename)
+
 
 class Prediction(models.Model):
     result = models.CharField(max_length=200)
