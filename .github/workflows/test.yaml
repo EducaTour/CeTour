@@ -8,8 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      DATABASE_URL: sqlite:///db.sqlite3
 
     steps:
       - name: Checkout Repository
@@ -22,9 +20,9 @@ jobs:
 
       - name: Before Script
         run: |
-          pip install -r requirements.txt
-          python manage.py migrate
+          pip install -r app/requirements.txt
+          python app/manage.py migrate
 
       - name: Run Tests
         run: |
-          python manage.py test
+          python app/manage.py test
