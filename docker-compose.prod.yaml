@@ -32,12 +32,13 @@ services:
       - 443:443
     depends_on:
       - web
-      - certbot
   certbot:
     image: certbot/certbot
     volumes:
       - ./certbot/conf/:/etc/letsencrypt/:rw
       - ./certbot/www/:/var/www/certbot/:rw
+    depends_on:
+      - nginx
     command: certonly --webroot -w /var/www/certbot --keep-until-expiring --email ${CERTBOT_EMAIL} -d ${CERTBOT_DOMAIN} --agree-tos --no-eff-email
 
 volumes:
