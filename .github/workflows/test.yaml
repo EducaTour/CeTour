@@ -21,7 +21,7 @@ jobs:
       - name: Before Script
         run: |
           pip install -r app/requirements.txt
-          python manage.py migrate
+          python app/manage.py migrate
 
       - name: Run Tests
         run: |
