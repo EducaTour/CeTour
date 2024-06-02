@@ -39,7 +39,7 @@ services:
       - ./certbot/www/:/var/www/certbot/:rw
     depends_on:
       - nginx
-    command: certonly --webroot -w /var/www/certbot --keep-until-expiring --email ${CERTBOT_EMAIL} -d ${CERTBOT_DOMAIN} --agree-tos --no-eff-email
+    command: certonly --webroot -w /var/www/certbot --keep-until-expiring --email moh.ferry07@gmail.com -d educatour-backend.swusjask.dev --agree-tos --no-eff-email
 
 volumes:
   postgres_data:
