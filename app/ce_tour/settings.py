@@ -31,7 +31,7 @@ DEBUG = bool(os.getenv("DEBUG", 0))
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:1337"]
+CSRF_TRUSTED_ORIGINS = ["https://educatour-backend.swusjask.dev"]
 
 
 # Application definition
