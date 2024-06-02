@@ -29,5 +29,5 @@ jobs:
             export CERTBOT_DOMAIN=$CERTBOT_DOMAIN
             cd ~/CeTour
             git pull origin main
-            docker compose -f docker-compose.prod.yaml down -v
+            docker compose -f docker-compose.prod.yaml down
             docker compose -f docker-compose.prod.yaml up -d --build
