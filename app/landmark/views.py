@@ -5,4 +5,4 @@ from rest_framework.views import APIView
 
 class LandmarkView(APIView):
     def get(self, request):
-        return Response({"message": "hello worldz"}, status.HTTP_200_OK)
+        return Response({"message": "hello worldzzz"}, status.HTTP_200_OK)
