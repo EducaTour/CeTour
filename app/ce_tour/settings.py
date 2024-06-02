@@ -111,6 +111,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#configuration for gcloud storage
+from google.oauth2 import service_account
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    "credensial.json"
+)
+
+DEFAULT_FILE_STORAGE="ce_tour.gcloud.GoogleCloudMediaFileStorage"
+GS_PROJECT_ID = "submissionmlgc-aptar"
+GS_BUCKET_NAME = "submissionmlgc-aptar"
+MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
