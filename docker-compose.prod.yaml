@@ -21,7 +21,7 @@ services:
     env_file:
       - ./.env.prod.db
   nginx:
-    build: nginx
+    image: nginx
     restart: unless-stopped
     volumes:
       - static_volume:/home/app/web/staticfiles
