@@ -27,6 +27,10 @@ jobs:
           script: |
             export CERTBOT_EMAIL=$CERTBOT_EMAIL
             export CERTBOT_DOMAIN=$CERTBOT_DOMAIN
+
+            echo $CERTBOT_EMAIL
+            echo 'duh kok gak bisa sih, emangn boleh'
+            env
             cd ~/CeTour
             git pull origin main
             docker compose -f docker-compose.prod.yaml down
