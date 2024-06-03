@@ -4,7 +4,7 @@ import uuid
 from django.db import models
 
 
-def get_file_path(filename):
+def get_file_path(instance, filename):
     ext = filename.split(".")[-1]
     new_filename = f"{uuid.uuid4()}.{ext}"
     return os.path.join("photos/", new_filename)
