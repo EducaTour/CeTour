@@ -1,13 +1,22 @@
+import random
+
 from rest_framework import serializers
 
-from .models import (
-    Landmark,
-    Location,
-    OpeningHour,
-    PhotoLandmark,
-    TicketPrice,
-    UniqueActivity,
-)
+from .models import Landmark, Location
+
+
+class LandmarkListSerializer(serializers.ModelSerializer):
+    photo = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Landmark
+        fields = ("id", "name", "photo")
+
+    def get_photo(self, obj):
+        photos = obj.photos.all()
+        if photos:
+            return random.choice(photos).photo_url
+        return None
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -16,7 +25,7 @@ class LocationSerializer(serializers.ModelSerializer):
         fields = ("address", "location_url")
 
 
-class LandmarkSerializer(serializers.ModelSerializer):
+class LandmarkDetailSerializer(serializers.ModelSerializer):
     location = LocationSerializer()
     photos = serializers.SerializerMethodField()
     unique_activities = serializers.SerializerMethodField()
