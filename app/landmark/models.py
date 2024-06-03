@@ -38,7 +38,7 @@ class PhotoLandmark(models.Model):
 class UniqueActivity(models.Model):
     name = models.CharField(max_length=255)
     landmark = models.ForeignKey(
-        Landmark, on_delete=models.CASCADE, related_name="activities"
+        Landmark, on_delete=models.CASCADE, related_name="unique_activities"
     )
 
     def __str__(self):
@@ -58,11 +58,11 @@ class OpeningHour(models.Model):
 
 
 class TicketPrice(models.Model):
-    day = models.CharField(max_length=10)
+    age = models.CharField(max_length=10)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     landmark = models.ForeignKey(
         Landmark, on_delete=models.CASCADE, related_name="ticket_prices"
     )
 
     def __str__(self):
-        return f"{self.day}: {self.price}"
+        return f"{self.age}: {self.price}"
