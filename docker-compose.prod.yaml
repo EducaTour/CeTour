@@ -17,6 +17,9 @@ services:
       - SQL_HOST=${SQL_HOST}
       - SQL_PORT=${SQL_PORT}
       - DATABASE=${DATABASE}
+      - GS_CREDENTIALS=${GS_CREDENTIALS}
+      - GS_PROJECT_ID=${GS_PROJECT_ID}
+      - GS_BUCKET_NAME=${GS_BUCKET_NAME}
     expose:
       - 8000
     depends_on:
