@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('result', models.CharField(max_length=200)),
                 ('rate', models.DecimalField(decimal_places=2, max_digits=4)),
-                ('image', models.ImageField(upload_to=prediction.models.get_file_path)),
+                ('image', models.URLField()),
                 ('createdAt', models.DateTimeField(auto_now_add=True)),
             ],
         ),
