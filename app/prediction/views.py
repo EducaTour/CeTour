@@ -22,7 +22,7 @@ class AddCapture(APIView):
                 {"message": "No file provided"}, status=status.HTTP_400_BAD_REQUEST
             )
 
-        save_directory = "/photo/"
+        save_directory = "./photo/"
 
         if not os.path.exists(save_directory):
             os.makedirs(save_directory)
