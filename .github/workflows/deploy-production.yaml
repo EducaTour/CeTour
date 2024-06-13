@@ -29,12 +29,15 @@ jobs:
           POSTGRES_DB: ${{secrets.POSTGRES_DB}}
           CERTBOT_EMAIL: ${{secrets.CERTBOT_EMAIL}}
           CERTBOT_DOMAIN: ${{secrets.CERTBOT_DOMAIN}}
+          GS_CREDENTIALS: ${{secrets.GS_CREDENTIALS}}
+          GS_PROJECT_ID: ${{secrets.GS_PROJECT_ID}}
+          GS_BUCKET_NAME: ${{secrets.GS_BUCKET_NAME}}
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{secrets.SSH_USERNAME}}
           key: ${{secrets.SSH_KEY}}
           port: 22
-          envs: SECRET_KEY,SQL_ENGINE,SQL_DATABASE,SQL_USER,SQL_PASSWORD,SQL_HOST,SQL_PORT,DATABASE,POSTGRES_USER,POSTGRES_PASSWORD,POSTGRES_DB,CERTBOT_EMAIL,CERTBOT_DOMAIN
+          envs: SECRET_KEY,SQL_ENGINE,SQL_DATABASE,SQL_USER,SQL_PASSWORD,SQL_HOST,SQL_PORT,DATABASE,POSTGRES_USER,POSTGRES_PASSWORD,POSTGRES_DB,CERTBOT_EMAIL,CERTBOT_DOMAIN,GS_CREDENTIALS,GS_PROJECT_ID,GS_BUCKET_NAME
           script: |
             export SECRET_KEY=$SECRET_KEY
             export SQL_ENGINE=$SQL_ENGINE
@@ -49,6 +52,9 @@ jobs:
             export POSTGRES_DB=$POSTGRES_DB
             export CERTBOT_EMAIL=$CERTBOT_EMAIL
             export CERTBOT_DOMAIN=$CERTBOT_DOMAIN
+            export GS_CREDENTIALS=$GS_CREDENTIALS
+            export GS_PROJECT_ID=$GS_PROJECT_ID
+            export GS_BUCKET_NAME=$GS_BUCKET_NAME
 
             cd ~/CeTour
             git pull origin main
