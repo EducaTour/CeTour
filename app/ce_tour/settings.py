@@ -115,12 +115,12 @@ AUTH_PASSWORD_VALIDATORS = [
 from google.oauth2 import service_account
 
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.getenv("GS_CREDENTIALS")
+    os.environ.get("GS_CREDENTIALS")
 )
 
 DEFAULT_FILE_STORAGE = "ce_tour.gcloud.GoogleCloudMediaFileStorage"
-GS_PROJECT_ID = os.getenv("GS_PROJECT_ID")
-GS_BUCKET_NAME = os.getenv("GS_BUCKET_NAME")
+GS_PROJECT_ID = os.environ.get("GS_PROJECT_ID")
+GS_BUCKET_NAME = os.environ.get("GS_BUCKET_NAME")
 MEDIA_URL = "https://storage.googleapis.com/{}/".format(GS_BUCKET_NAME)
 
 # Internationalization
