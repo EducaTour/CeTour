@@ -1,7 +1,9 @@
 from django.contrib import admin
 
 from .models import (
+    Language,
     Landmark,
+    LandmarkContent,
     Location,
     OpeningHour,
     PhotoLandmark,
@@ -15,8 +17,6 @@ class LandmarkAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "name",
-        "description",
-        "history",
         "phone",
         "email",
         "website",
@@ -24,8 +24,20 @@ class LandmarkAdmin(admin.ModelAdmin):
     )
 
 
+class LandmarkContentAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "description",
+        "history",
+        "landmark",
+        "language",
+    )
+
+
 # Register your models here.
 admin.site.register(Landmark, LandmarkAdmin)
+admin.site.register(Language)
+admin.site.register(LandmarkContent,LandmarkContentAdmin)
 admin.site.register(Location)
 admin.site.register(OpeningHour)
 admin.site.register(PhotoLandmark)
