@@ -2,7 +2,7 @@ import random
 
 from rest_framework import serializers
 
-from .models import Landmark, Location, LandmarkContent, Language
+from .models import Landmark, LandmarkContent, Language, Location
 
 
 class LandmarkListSerializer(serializers.ModelSerializer):
@@ -72,13 +72,13 @@ class LandmarkDetailSerializer(serializers.ModelSerializer):
 
     def get_contact_info(self, obj):
         return {"phone": obj.phone, "email": obj.email, "website": obj.website}
-    
+
     def get_description(self, obj):
         request = self.context["request"]
-        accept_language_header = request.headers.get('Accept-Language')
+        accept_language_header = request.headers.get("Accept-Language")
 
-        user_language = 'English'
-    
+        user_language = "English"
+
         if accept_language_header:
             user_language = accept_language_header
 
@@ -88,27 +88,31 @@ class LandmarkDetailSerializer(serializers.ModelSerializer):
             language = Language.objects.get(id=1)
 
         try:
-            landmark_content = LandmarkContent.objects.get(landmark=obj, language=language)
+            landmark_content = LandmarkContent.objects.get(
+                landmark=obj, language=language
+            )
             return landmark_content.description
         except LandmarkContent.DoesNotExist:
             return None
 
     def get_history(self, obj):
         request = self.context["request"]
-        accept_language_header = request.headers.get('Accept-Language')
+        accept_language_header = request.headers.get("Accept-Language")
 
-        user_language = 'English'
+        user_language = "English"
 
         if accept_language_header:
-            user_language = accept_language_header            
-            
+            user_language = accept_language_header
+
         try:
             language = Language.objects.get(name=user_language)
         except Language.DoesNotExist:
             language = Language.objects.get(id=1)
-            
+
         try:
-            landmark_content = LandmarkContent.objects.get(landmark=obj, language=language)
+            landmark_content = LandmarkContent.objects.get(
+                landmark=obj, language=language
+            )
             return landmark_content.history
         except LandmarkContent.DoesNotExist:
             return None

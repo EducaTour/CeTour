@@ -20,5 +20,5 @@ class LandmarkDetailView(APIView):
         except Landmark.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        serializer = LandmarkDetailSerializer(landmark, context={'request': request})
+        serializer = LandmarkDetailSerializer(landmark, context={"request": request})
         return Response({"landmark": serializer.data})

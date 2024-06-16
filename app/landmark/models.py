@@ -16,7 +16,7 @@ class Language(models.Model):
     def __str__(self):
         return self.name
 
-    
+
 class Landmark(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
@@ -30,7 +30,7 @@ class Landmark(models.Model):
     def __str__(self):
         return self.name
 
-    
+
 class LandmarkContent(models.Model):
     id = models.AutoField(primary_key=True)
     description = models.TextField()
@@ -44,7 +44,7 @@ class LandmarkContent(models.Model):
 
     def __str__(self):
         return self.description
-    
+
 
 class PhotoLandmark(models.Model):
     photo_url = models.URLField()

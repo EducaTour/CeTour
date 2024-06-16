@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 from .models import (
-    Language,
     Landmark,
     LandmarkContent,
+    Language,
     Location,
     OpeningHour,
     PhotoLandmark,
@@ -37,7 +37,7 @@ class LandmarkContentAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Landmark, LandmarkAdmin)
 admin.site.register(Language)
-admin.site.register(LandmarkContent,LandmarkContentAdmin)
+admin.site.register(LandmarkContent, LandmarkContentAdmin)
 admin.site.register(Location)
 admin.site.register(OpeningHour)
 admin.site.register(PhotoLandmark)
