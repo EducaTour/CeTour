@@ -9,11 +9,17 @@ class Location(models.Model):
         return self.address
 
 
+class Language(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    
 class Landmark(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    description = models.TextField()
-    history = models.TextField()
     phone = models.CharField(max_length=15)
     email = models.EmailField()
     website = models.URLField()
@@ -24,6 +30,21 @@ class Landmark(models.Model):
     def __str__(self):
         return self.name
 
+    
+class LandmarkContent(models.Model):
+    id = models.AutoField(primary_key=True)
+    description = models.TextField()
+    history = models.TextField()
+    landmark = models.ForeignKey(
+        Landmark, on_delete=models.CASCADE, related_name="content"
+    )
+    language = models.ForeignKey(
+        Language, on_delete=models.CASCADE, related_name="content"
+    )
+
+    def __str__(self):
+        return self.description
+    
 
 class PhotoLandmark(models.Model):
     photo_url = models.URLField()
