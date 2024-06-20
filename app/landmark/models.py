@@ -79,7 +79,7 @@ class OpeningHour(models.Model):
 
 
 class TicketPrice(models.Model):
-    age = models.CharField(max_length=10)
+    age = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     landmark = models.ForeignKey(
         Landmark, on_delete=models.CASCADE, related_name="ticket_prices"
